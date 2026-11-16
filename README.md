@@ -1,6 +1,6 @@
 # Dune Prime Holiday Homes — website
 
-Static Next.js site for Cloudflare Pages, rebuilt from the v4.4 design reference
+Static Next.js site, deployed on Railway, rebuilt from the v4.4 design reference
 (`20261116_Dune Prime 웹사이트_v4.4`) following the Developer Handoff v4.4.
 
 - English at `/`, Korean at `/ko/` (linked with hreflang)
@@ -13,12 +13,28 @@ Static Next.js site for Cloudflare Pages, rebuilt from the v4.4 design reference
 npm install
 npm run dev        # http://localhost:3000 (generates images first)
 npm run build      # static export into out/ (generates images first)
+npm start          # serves out/ on $PORT (default 3000), as in production
 npm run lint
 npm run typecheck
 npm run format
 ```
 
-Cloudflare Pages: build command `npm run build`, output directory `out`.
+## Deployment (Railway)
+
+`railway.json` sets the build (`npm run build`) and start (`npm start`) commands and a health
+check on `/`. `npm start` serves the static `out/` folder with `serve`; `public/serve.json`
+configures trailing-slash URLs, the 404 page, caching and security headers.
+
+Set these variables in Railway → Variables **before the build** (they are baked in at build time):
+
+- `NEXT_PUBLIC_SITE_URL` = the real domain, e.g. `https://example.com` (canonical URLs, sitemap, share images)
+- `NEXT_PUBLIC_FORM_ENDPOINT` = the inquiry API URL (empty = demo mode)
+
+Custom domain: Railway → Settings → Networking → Custom Domain, then add the DNS record Railway
+shows at the domain registrar. Changing a variable needs a redeploy to take effect.
+
+The site is plain static files, so it can also be hosted on Cloudflare Pages or any static host
+(output directory `out`) without code changes.
 
 ## Where things live
 
