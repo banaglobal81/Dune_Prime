@@ -27,8 +27,9 @@ configures trailing-slash URLs, the 404 page, caching and security headers.
 
 Set these variables in Railway → Variables **before the build** (they are baked in at build time):
 
-- `NEXT_PUBLIC_SITE_URL` = the real domain, e.g. `https://example.com` (canonical URLs, sitemap, share images)
-- `NEXT_PUBLIC_FORM_ENDPOINT` = the inquiry API URL (empty = demo mode)
+- `NEXT_PUBLIC_SITE_URL` = `https://www.duneprime.com` (the default if unset; canonical URLs, sitemap, share images)
+- `NEXT_PUBLIC_FORM_ENDPOINT` = the inquiry API URL, e.g. `https://api.duneprime.com/inquiries` (empty = demo mode)
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` = Cloudflare Turnstile site key (empty = no anti-spam widget)
 
 Custom domain: Railway → Settings → Networking → Custom Domain, then add the DNS record Railway
 shows at the domain registrar. Changing a variable needs a redeploy to take effect.
@@ -50,7 +51,12 @@ The site is plain static files, so it can also be hosted on Cloudflare Pages or 
 | Colours, spacing, type                                       | `src/styles/globals.css` (`:root` tokens)                            |
 | Pages                                                        | `src/components/pages/`; routes in `src/app/(en)/` and `src/app/ko/` |
 
-## For the back end: inquiry endpoint
+## Back end: inquiry API (`api/`)
+
+The back end lives in [`api/`](api/README.md): a small Node service (Hono + TypeScript) that
+validates each inquiry, stores it in the Google Sheet, sends the visitor an auto-reply, alerts
+the team by email and WhatsApp, and re-alerts after 24 hours. It deploys as its own Railway
+service (Root Directory `api`). See `api/README.md` and `api/.env.example`.
 
 The form POSTs JSON to `NEXT_PUBLIC_FORM_ENDPOINT`. While it is empty the site runs in
 **demo mode**: nothing is sent and the payload is logged to the browser console.
@@ -72,9 +78,9 @@ the handoff (date, name, email, type, timing, message, consent time, UTM source)
 }
 ```
 
-Any 2xx response counts as success; anything else shows an error to the visitor. The Worker
-should validate again server-side, verify Turnstile (to add), write the sheet row, send the
-auto-reply and alert the team. A hidden honeypot field drops simple bots before sending.
+With Turnstile on, the payload also carries `turnstileToken`. Any 2xx response counts as
+success; anything else shows an error to the visitor. A hidden honeypot field drops simple
+bots before sending.
 
 ## Switches and placeholders
 
@@ -91,8 +97,8 @@ Section switches in `src/config/site.ts` → `features`:
 Before launch:
 
 - [ ] Real email and WhatsApp in `siteConfig.contact`, then `isDemo: false` (demo values are shown but not linked)
-- [ ] `NEXT_PUBLIC_SITE_URL` set to the real domain
-- [ ] `NEXT_PUBLIC_FORM_ENDPOINT` set to the Worker
+- [ ] Inquiry API deployed with the Google Sheet and email configured (`api/README.md`)
+- [ ] `NEXT_PUBLIC_FORM_ENDPOINT` set to the API, and Turnstile keys set on both sides
 - [ ] Real photos for Unit 603, the villa and the team (AI images are labelled "Illustrative image")
 - [ ] Legal review of investor wording, projections and consent text
 - [ ] GA4 + cookie consent (`src/services/analytics.ts` is ready; events: `generate_lead`, `whatsapp_click`)

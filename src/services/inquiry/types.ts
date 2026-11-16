@@ -26,6 +26,8 @@ export interface InquiryInput {
   consent: boolean;
   /** Honeypot. Real visitors never see or fill this field. */
   company: string;
+  /** Cloudflare Turnstile token (empty when Turnstile is not configured). */
+  turnstileToken: string;
 }
 
 export interface InquiryAttribution {
@@ -49,6 +51,8 @@ export interface InquiryPayload {
   /** ISO 8601 time the form was submitted. */
   submittedAt: string;
   source: InquiryAttribution;
+  /** Verified server-side when the API has TURNSTILE_SECRET_KEY. */
+  turnstileToken?: string;
 }
 
 export type InquiryField = "name" | "email" | "consent";

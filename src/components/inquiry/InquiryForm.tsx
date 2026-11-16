@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { trackEvent } from "@/services/analytics";
@@ -16,6 +17,7 @@ import {
   type InquiryInput,
 } from "@/services/inquiry/types";
 import styles from "./InquiryForm.module.css";
+import { TURNSTILE_FIELD, TurnstileWidget } from "./TurnstileWidget";
 
 type Status = "idle" | "sending" | "sent" | "failed";
 
@@ -32,6 +34,8 @@ export function InquiryForm({ locale, copy }: InquiryFormProps) {
   const [errors, setErrors] = useState<InquiryFieldErrors>({});
   const consentAt = useRef<string | null>(null);
   const thanksRef = useRef<HTMLParagraphElement>(null);
+  const [turnstileReset, setTurnstileReset] = useState(0);
+  const { turnstileSiteKey } = siteConfig.inquiry;
   const t = copy.form;
 
   useEffect(() => rememberFirstTouch(), []);
@@ -51,6 +55,7 @@ export function InquiryForm({ locale, copy }: InquiryFormProps) {
       message: value("message"),
       consent: data.get("consent") === "on",
       company: value("company"),
+      turnstileToken: value(TURNSTILE_FIELD),
     };
   };
 
@@ -79,6 +84,8 @@ export function InquiryForm({ locale, copy }: InquiryFormProps) {
       return;
     }
     setStatus("failed");
+    // A Turnstile token is single-use: get a fresh one before the visitor retries.
+    setTurnstileReset((n) => n + 1);
   };
 
   const clearError = (field: InquiryField) => {
@@ -198,6 +205,16 @@ export function InquiryForm({ locale, copy }: InquiryFormProps) {
           </span>
         ) : null}
       </div>
+
+      {turnstileSiteKey ? (
+        <div className={styles.full}>
+          <TurnstileWidget
+            siteKey={turnstileSiteKey}
+            locale={locale}
+            resetSignal={turnstileReset}
+          />
+        </div>
+      ) : null}
 
       <div className={styles.full}>
         <Button

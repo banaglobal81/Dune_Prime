@@ -49,6 +49,7 @@ export class InquiryService {
       consentAt: context.consentAt,
       submittedAt: new Date().toISOString(),
       source: collectAttribution(),
+      ...(input.turnstileToken ? { turnstileToken: input.turnstileToken } : {}),
     };
   }
 }

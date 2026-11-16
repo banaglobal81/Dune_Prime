@@ -1,9 +1,10 @@
 /**
  * Site-wide settings. This is the one file to edit for launch values.
  *
- * Environment variables (set in Cloudflare Pages → Settings → Environment variables):
- *   NEXT_PUBLIC_SITE_URL       Public origin, e.g. https://duneprime.com (canonical URLs, sitemap, OG)
- *   NEXT_PUBLIC_FORM_ENDPOINT  Inquiry endpoint (Cloudflare Worker). Empty = demo mode, nothing is sent.
+ * Environment variables (set in Railway → Variables, before the build):
+ *   NEXT_PUBLIC_SITE_URL       Public origin, default https://www.duneprime.com (canonical URLs, sitemap, OG)
+ *   NEXT_PUBLIC_FORM_ENDPOINT  Inquiry API URL (api/ service). Empty = demo mode, nothing is sent.
+ *   NEXT_PUBLIC_TURNSTILE_SITE_KEY  Cloudflare Turnstile site key. Empty = no anti-spam widget.
  */
 
 export interface ContactDetails {
@@ -34,7 +35,7 @@ export interface FeatureFlags {
 export const siteConfig = {
   name: "Dune Prime Holiday Homes",
   legalName: "Dune Prime Holiday Homes L.L.C.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://duneprime.com").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.duneprime.com").replace(/\/$/, ""),
   licence: "1657365",
   foundingYear: 2026,
   address: { locality: "Dubai", country: "AE" },
@@ -57,6 +58,8 @@ export const siteConfig = {
 
   inquiry: {
     endpoint: process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? "",
+    /** Cloudflare Turnstile site key (public). Empty = no widget; the API must then run without TURNSTILE_SECRET_KEY. */
+    turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "",
   },
 } as const;
 
