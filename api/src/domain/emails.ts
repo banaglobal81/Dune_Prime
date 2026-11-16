@@ -25,7 +25,7 @@ const AUTO_REPLY: Record<SupportedLocale, { subject: string; body: (name: string
         "Kind regards,",
         "Dune Prime Holiday Homes L.L.C.",
         "DET Licence 1657365 · Dubai, United Arab Emirates",
-        "https://www.dunepr.com",
+        "https://dunepr.com",
       ].join("\n"),
   },
   ko: {
@@ -41,7 +41,7 @@ const AUTO_REPLY: Record<SupportedLocale, { subject: string; body: (name: string
         "감사합니다.",
         "Dune Prime Holiday Homes L.L.C.",
         "DET 상업 라이선스 1657365 · 두바이, 아랍에미리트",
-        "https://www.dunepr.com/ko/",
+        "https://dunepr.com/ko/",
       ].join("\n"),
   },
 };
@@ -78,7 +78,7 @@ export function teamAlertEmail(record: InquiryRecord, to: string[]): EmailMessag
     to,
     subject: `New inquiry · ${INQUIRER_TYPE_LABELS[record.type]} · ${record.name}`,
     text: [
-      'A new inquiry arrived on www.dunepr.com. Please reply the same day and set its status to "Contacted" in the inquiry sheet.',
+      'A new inquiry arrived on dunepr.com. Please reply the same day and set its status to "Contacted" in the inquiry sheet.',
       "",
       summary(record),
       "",

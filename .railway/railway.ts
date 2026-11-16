@@ -91,10 +91,10 @@ export default defineRailway(() => {
       healthcheckPath: "/",
       restartPolicyType: "ON_FAILURE",
     },
-    // Custom domain www.dunepr.com is added with `railway domain` (not supported in this file).
+    // Custom domain dunepr.com is added in the Railway dashboard (not supported in this file).
     env: {
       // Baked into the static HTML at build time: redeploy the website after changing them.
-      NEXT_PUBLIC_SITE_URL: "https://www.dunepr.com",
+      NEXT_PUBLIC_SITE_URL: "https://dunepr.com",
       NEXT_PUBLIC_FORM_ENDPOINT: "https://${{api.RAILWAY_PUBLIC_DOMAIN}}/inquiries",
       NEXT_PUBLIC_TURNSTILE_SITE_KEY: preserve(),
     },

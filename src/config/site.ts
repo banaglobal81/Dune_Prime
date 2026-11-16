@@ -2,7 +2,7 @@
  * Site-wide settings. This is the one file to edit for launch values.
  *
  * Environment variables (set in Railway → Variables, before the build):
- *   NEXT_PUBLIC_SITE_URL       Public origin, default https://www.dunepr.com (canonical URLs, sitemap, OG)
+ *   NEXT_PUBLIC_SITE_URL       Public origin, default https://dunepr.com (canonical URLs, sitemap, OG)
  *   NEXT_PUBLIC_FORM_ENDPOINT  Inquiry API URL (api/ service). Empty = demo mode, nothing is sent.
  *   NEXT_PUBLIC_TURNSTILE_SITE_KEY  Cloudflare Turnstile site key. Empty = no anti-spam widget.
  */
@@ -35,7 +35,7 @@ export interface FeatureFlags {
 export const siteConfig = {
   name: "Dune Prime Holiday Homes",
   legalName: "Dune Prime Holiday Homes L.L.C.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.dunepr.com").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dunepr.com").replace(/\/$/, ""),
   licence: "1657365",
   foundingYear: 2026,
   address: { locality: "Dubai", country: "AE" },
