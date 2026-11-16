@@ -21,18 +21,33 @@ npm run format
 
 ## Deployment (Railway)
 
-`railway.json` sets the build (`npm run build`) and start (`npm start`) commands and a health
-check on `/`. `npm start` serves the static `out/` folder with `serve`; `public/serve.json`
-configures trailing-slash URLs, the 404 page, caching and security headers.
+Railway project `dune-prime` has three services, all defined in
+[`.railway/railway.ts`](.railway/railway.ts) (Railway Infrastructure as Code):
 
-Set these variables in Railway → Variables **before the build** (they are baked in at build time):
+| Service    | What                                    | Source          |
+| ---------- | --------------------------------------- | --------------- |
+| `website`  | This static site, served by `npm start` | repository root |
+| `api`      | Inquiry API (`api/README.md`)           | `/api`          |
+| `reminder` | Hourly 24-hour follow-up job (cron)     | `/api`          |
 
-- `NEXT_PUBLIC_SITE_URL` = `https://www.duneprime.com` (the default if unset; canonical URLs, sitemap, share images)
-- `NEXT_PUBLIC_FORM_ENDPOINT` = the inquiry API URL, e.g. `https://api.duneprime.com/inquiries` (empty = demo mode)
-- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` = Cloudflare Turnstile site key (empty = no anti-spam widget)
+To change services, edit that file and run `railway config plan`, then `railway config apply`
+(the CLI must be linked: `railway link`). Railway reads it only on plan/apply, not on deploy.
+Pushing to `main` deploys the services whose files changed (watch paths).
 
-Custom domain: Railway → Settings → Networking → Custom Domain, then add the DNS record Railway
-shows at the domain registrar. Changing a variable needs a redeploy to take effect.
+`npm start` serves the static `out/` folder with `serve`; `public/serve.json` configures
+trailing-slash URLs, the 404 page, caching and security headers.
+
+Website variables (baked into the HTML at build time, so redeploy after changing them):
+
+- `NEXT_PUBLIC_SITE_URL` = `https://www.duneprime.com` (canonical URLs, sitemap, share images)
+- `NEXT_PUBLIC_FORM_ENDPOINT` = the API's `/inquiries` URL (set automatically; empty = demo mode)
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` = Cloudflare Turnstile site key (set in the dashboard; empty = no widget)
+
+API secrets (Google Sheet, Resend, team alerts, Turnstile secret) are set in the dashboard on the
+`api` service; the `reminder` service references them. See `api/.env.example`.
+
+Custom domain `www.duneprime.com` is attached to the `website` service; its DNS record is added
+at the domain registrar.
 
 The site is plain static files, so it can also be hosted on Cloudflare Pages or any static host
 (output directory `out`) without code changes.

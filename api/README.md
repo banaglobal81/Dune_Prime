@@ -61,15 +61,13 @@ as a spreadsheet formula.
 
 ## Deploy on Railway
 
-Two services from this repository, both with **Root Directory = `api`**:
+The `api` and `reminder` services are defined in `../.railway/railway.ts` (both build from
+`/api`; the reminder runs `npm run remind` hourly and exits). The website's
+`NEXT_PUBLIC_FORM_ENDPOINT` points at this API's Railway domain automatically.
 
-1. **Inquiry API**: config file `api/railway.json`. Add the variables from `.env.example`.
-   Give it a domain, e.g. `api.duneprime.com` (Settings → Networking → Custom Domain).
-2. **Reminder (cron)**: config file path `api/railway.reminder.json` (runs hourly, then exits).
-   Same variables as the API (Railway shared variables make this easy).
-
-Then, in the **website** service, set `NEXT_PUBLIC_FORM_ENDPOINT=https://api.duneprime.com/inquiries`
-(and `NEXT_PUBLIC_TURNSTILE_SITE_KEY` if Turnstile is on) and redeploy the website.
+Set the integration secrets from `.env.example` on the **api** service (dashboard → api →
+Variables). The reminder service references the api's values, so set them once. The config
+file declares them with `preserve()`, so `railway config apply` never overwrites them.
 
 ## Notes
 

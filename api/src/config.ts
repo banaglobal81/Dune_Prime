@@ -113,15 +113,21 @@ const DEFAULT_ORIGINS = ["https://www.duneprime.com", "https://duneprime.com"];
 const DEV_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"];
 
 export function loadConfig(source: NodeJS.ProcessEnv = process.env): AppConfig {
-  const parsed = envSchema.safeParse(source);
+  // Hosting dashboards often store unset variables as empty strings: treat those as "not set".
+  const defined = Object.fromEntries(
+    Object.entries(source).filter(([, value]) => value !== undefined && value.trim() !== ""),
+  );
+  const parsed = envSchema.safeParse(defined);
   if (!parsed.success) {
     const details = parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
     throw new Error(`Invalid environment configuration: ${details}`);
   }
   const env = parsed.data;
 
-  const allowedOrigins = env.ALLOWED_ORIGINS.length ? env.ALLOWED_ORIGINS : DEFAULT_ORIGINS;
-  if (env.NODE_ENV !== "production") allowedOrigins.push(...DEV_ORIGINS);
+  const allowedOrigins = [
+    ...(env.ALLOWED_ORIGINS.length ? env.ALLOWED_ORIGINS : DEFAULT_ORIGINS),
+    ...(env.NODE_ENV === "production" ? [] : DEV_ORIGINS),
+  ];
 
   const sheets =
     env.GOOGLE_SHEET_ID && env.GOOGLE_SERVICE_ACCOUNT_EMAIL && env.GOOGLE_PRIVATE_KEY
