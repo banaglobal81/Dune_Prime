@@ -42,9 +42,13 @@ export default defineRailway(() => {
     env: {
       NODE_ENV: "production",
       MAIL_FROM: "Dune Prime <hello@duneprime.com>",
-      // The website's custom domain, the bare domain, and its Railway domain (for testing).
-      ALLOWED_ORIGINS:
-        "https://www.duneprime.com,https://duneprime.com,https://${{website.RAILWAY_PUBLIC_DOMAIN}}",
+      // The website's custom domain, the bare domain, and its Railway test domain.
+      // (website.RAILWAY_PUBLIC_DOMAIN resolves to the custom domain, so the test domain is listed.)
+      ALLOWED_ORIGINS: [
+        "https://www.duneprime.com",
+        "https://duneprime.com",
+        "https://website-production-65abd3ff.up.railway.app",
+      ].join(","),
       ...Object.fromEntries(API_SECRET_NAMES.map((name) => [name, preserve()])),
     },
   });
