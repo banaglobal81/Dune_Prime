@@ -1,0 +1,145 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 28px;
+}
+
+.field,
+.full {
+  min-width: 0;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  display: block;
+  padding-top: 16px;
+  font-size: 12.5px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 8px 0 12px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+  color: #fff;
+  font: 500 17px/1.4 var(--font);
+}
+
+.field select {
+  cursor: pointer;
+}
+
+.field select option {
+  color: #000;
+}
+
+.field textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: #fff;
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  box-shadow: 0 1px 0 0 #fff;
+}
+
+.field [aria-invalid="true"] {
+  border-bottom-color: #ff9b8f;
+}
+
+.consent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding-top: 20px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.consent input {
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  flex-shrink: 0;
+  accent-color: #fff;
+}
+
+.error {
+  display: block;
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: #ff9b8f;
+}
+
+.submit {
+  margin-top: 28px;
+  padding: 17px 30px;
+}
+
+.formError {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #ff9b8f;
+  min-height: 1px;
+}
+
+.formError:empty {
+  margin: 0;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+p.thanks {
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+  outline: none;
+}
+
+.thanksTitle {
+  color: #fff;
+}
+
+.thanksBody {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 860px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,90 @@
+.hero {
+  padding: 0 var(--gutter-right) var(--pad) var(--gutter-left);
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: #222;
+}
+
+.page .frame {
+  height: min(92vh, 880px);
+  height: min(92svh, 880px);
+  min-height: 520px;
+}
+
+.scene .frame {
+  height: min(80vh, 760px);
+  height: min(80svh, 760px);
+  min-height: 520px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Darkens the bottom so the white caption stays readable on any photo. */
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0.6)
+  );
+  pointer-events: none;
+}
+
+.caption {
+  position: absolute;
+  z-index: 2;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: clamp(44px, 6.5vw, 104px);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.page .title {
+  font-size: clamp(38px, 6.6vw, 104px);
+  max-width: 15ch;
+}
+
+.scene .title {
+  font-size: clamp(32px, 6.4vw, 104px);
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+  max-width: 14ch;
+}
+
+:global(html[lang="ko"]) .title {
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  max-width: 30ch;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  padding-bottom: 0.8em;
+}
+
+@media (max-width: 760px) {
+  .caption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

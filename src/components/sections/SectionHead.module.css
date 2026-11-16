@@ -1,0 +1,21 @@
+.head {
+  margin-bottom: clamp(36px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--pad);
+  align-items: end;
+}
+
+.head > * {
+  min-width: 0;
+}
+
+.aside > * + * {
+  margin-top: 22px;
+}
+
+@media (max-width: 860px) {
+  .head {
+    grid-template-columns: 1fr;
+  }
+}

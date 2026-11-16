@@ -1,0 +1,31 @@
+.section {
+  padding-block: var(--sec);
+  padding-left: var(--gutter-left);
+  padding-right: var(--gutter-right);
+}
+
+.default {
+  background: transparent;
+}
+
+.paper {
+  background: var(--paper);
+}
+
+.dark {
+  background: var(--dark);
+  color: var(--on-dark);
+}
+
+.dark :global(.lead),
+.dark p {
+  color: var(--on-dark-soft);
+}
+
+.dark :global(.lab) {
+  color: var(--on-dark-mute);
+}
+
+.flushTop {
+  padding-top: 0;
+}

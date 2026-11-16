@@ -1,0 +1,58 @@
+.title {
+  margin-top: 22px;
+  max-width: 12ch;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(36px, 7vw, 112px);
+  align-items: start;
+  margin-top: clamp(28px, 4vw, 56px);
+}
+
+.layout > * {
+  min-width: 0;
+}
+
+.reach {
+  margin: 34px 0 0;
+  display: grid;
+  gap: 6px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.reach > div {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.reach dt {
+  color: #fff;
+  font-weight: 600;
+}
+
+.reach dd {
+  margin: 0;
+}
+
+.reach a {
+  color: inherit;
+}
+
+.reach a:hover {
+  color: #fff;
+}
+
+.hours {
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

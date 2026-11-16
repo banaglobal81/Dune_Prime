@@ -1,0 +1,178 @@
+/*
+ * Global tokens and base styles. Ported from the v4.4 design reference (index.html).
+ * Component styles live next to each component as CSS Modules.
+ */
+
+:root {
+  /* Colour */
+  --bg: #e9e9eb;
+  --paper: #f4f4f5;
+  --ink: #101012;
+  --mute: #66666e;
+  --line: #cdcdd2;
+  --dark: #101012;
+  --on-dark: #ffffff;
+  --on-dark-soft: rgba(255, 255, 255, 0.72);
+  --on-dark-mute: rgba(255, 255, 255, 0.55);
+  --on-dark-line: rgba(255, 255, 255, 0.22);
+
+  /* Space */
+  --sec: clamp(72px, 9vw, 136px);
+  --pad: clamp(22px, 3.5vw, 54px);
+  --gutter-left: max(var(--pad), env(safe-area-inset-left, 0px));
+  --gutter-right: max(var(--pad), env(safe-area-inset-right, 0px));
+  --header-h: 80px;
+
+  /* Type */
+  --font:
+    "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", "Segoe UI", sans-serif;
+  --track-label: 0.08em;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 8px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote {
+  margin: 0;
+}
+
+h2 {
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  font-size: clamp(38px, 5.8vw, 88px);
+  text-wrap: balance;
+}
+
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  font-size: 23px;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Shared text styles */
+.lab {
+  font-size: 12.5px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.dim {
+  color: var(--mute);
+}
+
+.lead {
+  font-size: clamp(16px, 1.35vw, 19px);
+  color: var(--mute);
+  max-width: 46ch;
+}
+
+.stack > * + * {
+  margin-top: 22px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--ink);
+  color: var(--on-dark);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Korean: uppercase tracking does not apply to Hangul, and tight display tracking hurts legibility. */
+html[lang="ko"] {
+  --track-label: 0;
+}
+
+html[lang="ko"] h1,
+html[lang="ko"] h2 {
+  letter-spacing: -0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

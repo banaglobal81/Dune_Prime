@@ -1,0 +1,81 @@
+.teamTitle {
+  margin: 10px 0 18px;
+  font-size: clamp(30px, 3.2vw, 50px);
+}
+
+.teamText {
+  color: var(--mute);
+  line-height: 1.6;
+}
+
+.inspectTitle {
+  font-size: clamp(34px, 4.4vw, 64px);
+}
+
+.point {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.point h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.point p {
+  color: var(--mute);
+  font-size: 16.5px;
+}
+
+.voices {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(28px, 4vw, 64px) var(--pad);
+}
+
+.voices figure {
+  min-width: 0;
+  border-top: 1px solid var(--ink);
+  padding-top: 26px;
+}
+
+.voices blockquote {
+  font-size: clamp(21px, 2vw, 28px);
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+
+.voices .featured {
+  grid-row: span 2;
+}
+
+.voices .featured blockquote {
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.28;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+.ctaTitle {
+  margin-top: 22px;
+  max-width: 14ch;
+}
+
+.ctaLead {
+  margin-top: 24px;
+}
+
+.ctaButton {
+  margin-top: 32px;
+}
+
+@media (max-width: 860px) {
+  .voices {
+    grid-template-columns: 1fr;
+  }
+
+  .voices .featured {
+    grid-row: auto;
+  }
+}
