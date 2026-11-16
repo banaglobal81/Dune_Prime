@@ -41,12 +41,12 @@ export default defineRailway(() => {
     },
     env: {
       NODE_ENV: "production",
-      MAIL_FROM: "Dune Prime <hello@duneprime.com>",
+      MAIL_FROM: "Dune Prime <hello@dunepr.com>",
       // The website's custom domain, the bare domain, and its Railway test domain.
       // (website.RAILWAY_PUBLIC_DOMAIN resolves to the custom domain, so the test domain is listed.)
       ALLOWED_ORIGINS: [
-        "https://www.duneprime.com",
-        "https://duneprime.com",
+        "https://www.dunepr.com",
+        "https://dunepr.com",
         "https://website-production-65abd3ff.up.railway.app",
       ].join(","),
       ...Object.fromEntries(API_SECRET_NAMES.map((name) => [name, preserve()])),
@@ -64,7 +64,7 @@ export default defineRailway(() => {
     },
     env: {
       NODE_ENV: "production",
-      MAIL_FROM: "Dune Prime <hello@duneprime.com>",
+      MAIL_FROM: "Dune Prime <hello@dunepr.com>",
       // Same integrations as the API, referenced so they are set only once.
       ...Object.fromEntries(API_SECRET_NAMES.map((name) => [name, `\${{api.${name}}}`])),
     },
@@ -91,10 +91,10 @@ export default defineRailway(() => {
       healthcheckPath: "/",
       restartPolicyType: "ON_FAILURE",
     },
-    // Custom domain www.duneprime.com is added with `railway domain` (not supported in this file).
+    // Custom domain www.dunepr.com is added with `railway domain` (not supported in this file).
     env: {
       // Baked into the static HTML at build time: redeploy the website after changing them.
-      NEXT_PUBLIC_SITE_URL: "https://www.duneprime.com",
+      NEXT_PUBLIC_SITE_URL: "https://www.dunepr.com",
       NEXT_PUBLIC_FORM_ENDPOINT: "https://${{api.RAILWAY_PUBLIC_DOMAIN}}/inquiries",
       NEXT_PUBLIC_TURNSTILE_SITE_KEY: preserve(),
     },

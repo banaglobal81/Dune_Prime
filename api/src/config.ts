@@ -49,7 +49,7 @@ const envSchema = z.object({
   GOOGLE_PRIVATE_KEY: z.string().optional(),
 
   // Email: Resend (HTTPS API) is preferred; SMTP is the alternative.
-  MAIL_FROM: z.string().default("Dune Prime <hello@duneprime.com>"),
+  MAIL_FROM: z.string().default("Dune Prime <hello@dunepr.com>"),
   MAIL_REPLY_TO: z.string().optional(),
   RESEND_API_KEY: z.string().optional(),
   SMTP_HOST: z.string().optional(),
@@ -109,7 +109,7 @@ export interface AppConfig {
   reminderAfterHours: number;
 }
 
-const DEFAULT_ORIGINS = ["https://www.duneprime.com", "https://duneprime.com"];
+const DEFAULT_ORIGINS = ["https://www.dunepr.com", "https://dunepr.com"];
 const DEV_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"];
 
 export function loadConfig(source: NodeJS.ProcessEnv = process.env): AppConfig {

@@ -22,7 +22,7 @@ function setup(options: { allow?: boolean } = {}) {
   const notifier = new TeamNotifier(
     mailer,
     whatsapp,
-    { emails: ["team@duneprime.com"], whatsapp: [] },
+    { emails: ["team@dunepr.com"], whatsapp: [] },
     silentLogger,
   );
   const service = new InquiryService({
@@ -31,7 +31,7 @@ function setup(options: { allow?: boolean } = {}) {
     notifier,
     spamGuard: new FakeGuard(options.allow ?? true),
     owners: {
-      investor: { name: "Investor desk", email: "invest@duneprime.com", whatsapp: "+971500000001" },
+      investor: { name: "Investor desk", email: "invest@dunepr.com", whatsapp: "+971500000001" },
       default: { name: "Front desk" },
     },
     logger: silentLogger,
@@ -82,10 +82,10 @@ describe("InquiryService", () => {
 
     const autoReply = mailer.sent.find((m) => m.to[0] === "sara@example.com");
     expect(autoReply?.subject).toContain("문의가 접수되었습니다");
-    expect(autoReply?.replyTo).toBe("invest@duneprime.com");
+    expect(autoReply?.replyTo).toBe("invest@dunepr.com");
 
     const alert = mailer.sent.find((m) => m.subject.startsWith("New inquiry"));
-    expect(alert?.to).toEqual(["invest@duneprime.com", "team@duneprime.com"]);
+    expect(alert?.to).toEqual(["invest@dunepr.com", "team@dunepr.com"]);
     expect(whatsapp.sent).toHaveLength(1);
     expect(whatsapp.sent[0]!.params).toEqual([
       "New inquiry",

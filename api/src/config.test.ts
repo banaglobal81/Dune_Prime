@@ -15,24 +15,21 @@ describe("loadConfig", () => {
     expect(config.sheets).toBeUndefined();
     expect(config.mail.resendApiKey).toBeUndefined();
     expect(config.owners).toEqual({});
-    expect(config.allowedOrigins).toEqual(["https://www.duneprime.com", "https://duneprime.com"]);
+    expect(config.allowedOrigins).toEqual(["https://www.dunepr.com", "https://dunepr.com"]);
   });
 
   it("parses owners, lists and the private key", () => {
     const config = loadConfig({
       NODE_ENV: "production",
-      ALLOWED_ORIGINS: "https://www.duneprime.com, https://x.up.railway.app",
-      TEAM_ALERT_EMAILS: "a@duneprime.com,b@duneprime.com",
-      INQUIRY_OWNERS: '{"investor":{"name":"Investor desk","email":"invest@duneprime.com"}}',
+      ALLOWED_ORIGINS: "https://www.dunepr.com, https://x.up.railway.app",
+      TEAM_ALERT_EMAILS: "a@dunepr.com,b@dunepr.com",
+      INQUIRY_OWNERS: '{"investor":{"name":"Investor desk","email":"invest@dunepr.com"}}',
       GOOGLE_SHEET_ID: "sheet",
       GOOGLE_SERVICE_ACCOUNT_EMAIL: "svc@project.iam.gserviceaccount.com",
       GOOGLE_PRIVATE_KEY: "-----BEGIN PRIVATE KEY-----\\nabc\\n-----END PRIVATE KEY-----\\n",
     });
-    expect(config.allowedOrigins).toEqual([
-      "https://www.duneprime.com",
-      "https://x.up.railway.app",
-    ]);
-    expect(config.team.emails).toEqual(["a@duneprime.com", "b@duneprime.com"]);
+    expect(config.allowedOrigins).toEqual(["https://www.dunepr.com", "https://x.up.railway.app"]);
+    expect(config.team.emails).toEqual(["a@dunepr.com", "b@dunepr.com"]);
     expect(config.owners.investor?.name).toBe("Investor desk");
     expect(config.sheets?.privateKey).toContain("\nabc\n");
   });

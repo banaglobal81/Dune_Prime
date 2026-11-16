@@ -39,14 +39,14 @@ trailing-slash URLs, the 404 page, caching and security headers.
 
 Website variables (baked into the HTML at build time, so redeploy after changing them):
 
-- `NEXT_PUBLIC_SITE_URL` = `https://www.duneprime.com` (canonical URLs, sitemap, share images)
+- `NEXT_PUBLIC_SITE_URL` = `https://www.dunepr.com` (canonical URLs, sitemap, share images)
 - `NEXT_PUBLIC_FORM_ENDPOINT` = the API's `/inquiries` URL (set automatically; empty = demo mode)
 - `NEXT_PUBLIC_TURNSTILE_SITE_KEY` = Cloudflare Turnstile site key (set in the dashboard; empty = no widget)
 
 API secrets (Google Sheet, Resend, team alerts, Turnstile secret) are set in the dashboard on the
 `api` service; the `reminder` service references them. See `api/.env.example`.
 
-Custom domain `www.duneprime.com` is attached to the `website` service; its DNS record is added
+Custom domain `www.dunepr.com` is attached to the `website` service; its DNS record is added
 at the domain registrar.
 
 The site is plain static files, so it can also be hosted on Cloudflare Pages or any static host

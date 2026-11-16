@@ -12,7 +12,7 @@ import {
 } from "../test/fakes.js";
 import { createApp } from "./app.js";
 
-const ORIGIN = "https://www.duneprime.com";
+const ORIGIN = "https://www.dunepr.com";
 
 function setup(options: { allow?: boolean; max?: number } = {}) {
   const repository = new FakeRepository();
@@ -20,7 +20,7 @@ function setup(options: { allow?: boolean; max?: number } = {}) {
   const notifier = new TeamNotifier(
     mailer,
     new FakeWhatsApp(),
-    { emails: ["team@duneprime.com"], whatsapp: [] },
+    { emails: ["team@dunepr.com"], whatsapp: [] },
     silentLogger,
   );
   const inquiries = new InquiryService({
