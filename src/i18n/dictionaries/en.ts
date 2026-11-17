@@ -354,7 +354,7 @@ export const en = {
     disclaimer:
       "Dune Prime is a licensed short-stay operator in Dubai. We welcome conversations with investors and partners. Any participation is discussed privately, offered only under applicable licences and after legal review, and is not a promise of returns. 2027 figures are projections. Availability, prices and permit status are confirmed on inquiry.",
     credits:
-      "Photos: Norlando Pobre (CC BY 2.0), Phil6007 (CC BY-SA 4.0), Francisco Anzola (CC BY 2.0), giggel (CC BY 3.0), Iwona Rege (CC BY-SA 4.0), via Wikimedia Commons.",
+      "Photos: Norlando Pobre (CC BY 2.0), Francisco Anzola (CC BY 2.0), giggel (CC BY 3.0), Iwona Rege (CC BY-SA 4.0), via Wikimedia Commons.",
     licensedBy: "Licensed by the Dubai Department of Economy and Tourism, Vacation Homes Rental",
     rights: "All rights reserved.",
   },

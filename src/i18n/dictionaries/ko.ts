@@ -336,7 +336,7 @@ export const ko: Dictionary = {
     disclaimer:
       "Dune Prime은 두바이의 인가받은 단기 숙박 운영사입니다. 투자자 및 파트너와의 대화를 환영합니다. 모든 참여는 개별적으로 논의되며, 관련 인허가 범위 안에서 법률 검토를 거친 후에만 제안되고, 수익을 약속하지 않습니다. 2027년 수치는 예상치입니다. 예약 가능 여부, 요금, 허가 상태는 문의 시 확정됩니다.",
     credits:
-      "사진: Norlando Pobre (CC BY 2.0), Phil6007 (CC BY-SA 4.0), Francisco Anzola (CC BY 2.0), giggel (CC BY 3.0), Iwona Rege (CC BY-SA 4.0), Wikimedia Commons.",
+      "사진: Norlando Pobre (CC BY 2.0), Francisco Anzola (CC BY 2.0), giggel (CC BY 3.0), Iwona Rege (CC BY-SA 4.0), Wikimedia Commons.",
     licensedBy: "두바이 경제관광청(DET) 발급 · 업종 홀리데이 홈 임대업",
     rights: "All rights reserved.",
   },
