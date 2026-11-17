@@ -28,7 +28,6 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
                     photo={home.photo}
                     alt={homes[home.copyKey].imageAlt}
                     sizes="(max-width: 520px) 100vw, (max-width: 860px) 50vw, 33vw"
-                    illustrativeLabel={dict.common.illustrative}
                     className={styles.image}
                   />
                 </figure>

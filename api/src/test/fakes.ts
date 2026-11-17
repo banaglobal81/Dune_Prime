@@ -74,7 +74,7 @@ export function websitePayload(overrides: Record<string, unknown> = {}) {
     name: "  Sara Kim ",
     email: "Sara@Example.com",
     type: "investor",
-    timing: "Q1 2027",
+    phone: "+971 501234567",
     message: "Interested in the reporting.",
     locale: "ko",
     consentAt: "2026-11-16T09:12:00.000Z",

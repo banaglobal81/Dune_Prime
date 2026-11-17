@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
+import { DEFAULT_DIALING_REGION, OTHER_REGION, type DialingOption } from "@/content/dialing-codes";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { trackEvent } from "@/services/analytics";
@@ -24,17 +25,21 @@ type Status = "idle" | "sending" | "sent" | "failed";
 interface InquiryFormProps {
   locale: Locale;
   copy: Dictionary["inquiry"];
+  /** Country codes with names in the page language (built on the server). */
+  dialingOptions: DialingOption[];
 }
 
-const FIELD_ORDER: InquiryField[] = ["name", "email", "consent"];
+const FIELD_ORDER: InquiryField[] = ["name", "email", "phone", "consent"];
 
-export function InquiryForm({ locale, copy }: InquiryFormProps) {
+export function InquiryForm({ locale, copy, dialingOptions }: InquiryFormProps) {
   const service = useMemo(() => createInquiryService(), []);
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<InquiryFieldErrors>({});
   const consentAt = useRef<string | null>(null);
   const thanksRef = useRef<HTMLParagraphElement>(null);
   const [turnstileReset, setTurnstileReset] = useState(0);
+  const [phoneRegion, setPhoneRegion] = useState<string>(DEFAULT_DIALING_REGION[locale]);
+  const phoneCode = dialingOptions.find((option) => option.region === phoneRegion)?.code ?? "+";
   const { turnstileSiteKey } = siteConfig.inquiry;
   const t = copy.form;
 
@@ -51,7 +56,8 @@ export function InquiryForm({ locale, copy }: InquiryFormProps) {
       name: value("name"),
       email: value("email"),
       type: (INQUIRER_TYPES as readonly string[]).includes(type) ? (type as InquirerType) : "other",
-      timing: value("timing"),
+      phoneRegion: value("phoneRegion"),
+      phoneNumber: value("phone"),
       message: value("message"),
       consent: data.get("consent") === "on",
       company: value("company"),
@@ -164,8 +170,47 @@ export function InquiryForm({ locale, copy }: InquiryFormProps) {
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="inq-timing">{t.timing}</label>
-        <input id="inq-timing" name="timing" placeholder={t.timingPlaceholder} maxLength={120} />
+        <label htmlFor="inq-phone">{t.phone}</label>
+        <div className={styles.phone}>
+          {/* Native select for accessibility; the visible face shows only the code. */}
+          <span className={styles.phoneCode}>
+            <span aria-hidden="true">{phoneCode}</span>
+            <select
+              name="phoneRegion"
+              aria-label={t.phoneCode}
+              value={phoneRegion}
+              onChange={(event) => {
+                setPhoneRegion(event.currentTarget.value);
+                clearError("phone");
+              }}
+            >
+              {dialingOptions.map((option) => (
+                <option key={option.region} value={option.region}>
+                  {option.label}
+                </option>
+              ))}
+              <option value={OTHER_REGION}>{t.phoneOther}</option>
+            </select>
+          </span>
+          <input
+            id="inq-phone"
+            name="phone"
+            type="tel"
+            autoComplete={phoneRegion === OTHER_REGION ? "tel" : "tel-national"}
+            inputMode="tel"
+            maxLength={30}
+            placeholder={
+              phoneRegion === OTHER_REGION ? t.phoneOtherPlaceholder : t.phonePlaceholder
+            }
+            onInput={() => clearError("phone")}
+            {...fieldProps("phone")}
+          />
+        </div>
+        {errors.phone ? (
+          <span id={errorId("phone")} className={styles.error}>
+            {t.errors.phone}
+          </span>
+        ) : null}
       </div>
 
       <div className={`${styles.field} ${styles.full}`}>

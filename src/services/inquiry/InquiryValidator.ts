@@ -1,3 +1,4 @@
+import { formatPhone, isValidPhone } from "./phone";
 import type { InquiryFieldErrors, InquiryInput } from "./types";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -8,6 +9,7 @@ export class InquiryValidator {
     const errors: InquiryFieldErrors = {};
     if (!input.name.trim()) errors.name = true;
     if (!EMAIL_PATTERN.test(input.email.trim())) errors.email = true;
+    if (!isValidPhone(formatPhone(input.phoneRegion, input.phoneNumber))) errors.phone = true;
     if (!input.consent) errors.consent = true;
     return errors;
   }

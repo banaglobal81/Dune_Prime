@@ -12,7 +12,8 @@ import {
 import type { InquiryRepository, Logger, StoredInquiry } from "../ports.js";
 
 /**
- * Sheet layout. The first ten columns follow the Developer Handoff v4.4 (page 6);
+ * Sheet layout. The first ten columns follow the Developer Handoff v4.4 (page 6), with
+ * "Phone" in place of "Timing" (review #1, 2026-11-17);
  * the rest support the pipeline. Row 1 holds these headers (written automatically
  * when the tab is empty). The team edits "Status" and "Owner" by hand.
  */
@@ -21,7 +22,7 @@ export const SHEET_COLUMNS = [
   "Name",
   "Email",
   "Type",
-  "Timing",
+  "Phone",
   "Message",
   "Consent time",
   "Source (UTM)",
@@ -121,7 +122,7 @@ export class GoogleSheetsInquiryRepository implements InquiryRepository {
     row[COL.Name] = record.name;
     row[COL.Email] = record.email;
     row[COL.Type] = INQUIRER_TYPE_LABELS[record.type];
-    row[COL.Timing] = record.timing;
+    row[COL.Phone] = record.phone;
     row[COL.Message] = record.message;
     row[COL["Consent time"]] = record.consentAt;
     row[COL["Source (UTM)"]] = describeSource(record.source);
@@ -146,7 +147,7 @@ export class GoogleSheetsInquiryRepository implements InquiryRepository {
       name: cell("Name"),
       email: cell("Email"),
       type,
-      timing: cell("Timing"),
+      phone: cell("Phone"),
       message: cell("Message"),
       locale: normalizeLocale(cell("Locale")),
       consentAt: cell("Consent time"),

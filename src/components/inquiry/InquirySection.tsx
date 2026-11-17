@@ -1,6 +1,7 @@
 import { ContactValue } from "@/components/layout/ContactLinks";
 import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/config/site";
+import { dialingOptions } from "@/content/dialing-codes";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { InquiryPanel } from "./InquiryPanel";
@@ -39,7 +40,12 @@ export function InquirySection({ locale, dict }: { locale: Locale; dict: Diction
           </dl>
           <p className={styles.hours}>{copy.hours}</p>
         </div>
-        <InquiryPanel locale={locale} copy={copy} chatEnabled={features.chat} />
+        <InquiryPanel
+          locale={locale}
+          copy={copy}
+          dialingOptions={dialingOptions(locale)}
+          chatEnabled={features.chat}
+        />
       </div>
     </Section>
   );

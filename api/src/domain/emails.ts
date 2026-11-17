@@ -61,7 +61,7 @@ function summary(record: InquiryRecord): string {
     `Type:     ${INQUIRER_TYPE_LABELS[record.type]}`,
     `Name:     ${record.name}`,
     `Email:    ${record.email}`,
-    `Timing:   ${record.timing || "-"}`,
+    `Phone:    ${record.phone || "-"}`,
     `Owner:    ${record.owner.name}`,
     `Language: ${record.locale}`,
     `Source:   ${describeSource(record.source)}${record.source.page ? ` (page ${record.source.page})` : ""}`,

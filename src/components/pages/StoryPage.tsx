@@ -28,13 +28,7 @@ export function StoryPage({ locale }: { locale: Locale }) {
 
       {features.team ? (
         <Section aria-labelledby="team-title">
-          <SplitFeature
-            photo="team"
-            alt={story.team.imageAlt}
-            shape="wide"
-            illustrativeLabel={dict.common.illustrative}
-            caption={story.team.note}
-          >
+          <SplitFeature photo="team" alt={story.team.imageAlt} shape="wide">
             <span className="lab dim">{story.team.eyebrow}</span>
             <h2 id="team-title" className={styles.teamTitle}>
               {story.team.title}
@@ -96,11 +90,7 @@ export function StoryPage({ locale }: { locale: Locale }) {
       </Section>
 
       <Section aria-labelledby="inspect-title">
-        <SplitFeature
-          photo="villa"
-          alt={story.inspect.imageAlt}
-          illustrativeLabel={dict.common.illustrative}
-        >
+        <SplitFeature photo="villa" alt={story.inspect.imageAlt}>
           <h2 id="inspect-title" className={styles.inspectTitle}>
             {story.inspect.title}
           </h2>

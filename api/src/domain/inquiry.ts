@@ -24,7 +24,8 @@ export const inquirySubmissionSchema = z.object({
   name: text(120).min(1),
   email: z.string().trim().toLowerCase().pipe(z.email().max(200)),
   type: z.enum(INQUIRER_TYPES),
-  timing: text(120).default(""),
+  /** International format, e.g. "+971 501234567". Optional. */
+  phone: text(40).default(""),
   message: text(4000).default(""),
   locale: z.string().trim().max(10).default("en"),
   consentAt: z.iso.datetime(),
@@ -74,7 +75,7 @@ export interface InquiryRecord {
   name: string;
   email: string;
   type: InquirerType;
-  timing: string;
+  phone: string;
   message: string;
   locale: SupportedLocale;
   consentAt: string;

@@ -53,7 +53,6 @@ function HomeSlide({ home, locale, dict }: { home: HomeEntry; locale: Locale; di
           photo={home.photo}
           alt={copy[home.copyKey].imageAlt}
           sizes="(max-width: 860px) 100vw, 55vw"
-          illustrativeLabel={dict.common.illustrative}
           className={styles.image}
         />
       </figure>

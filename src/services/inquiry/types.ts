@@ -3,7 +3,8 @@
  *
  * The website POSTs an `InquiryPayload` as JSON to NEXT_PUBLIC_FORM_ENDPOINT
  * (Cloudflare Worker). Fields map to the inquiry sheet columns in the
- * Developer Handoff v4.4 (page 6): date, name, email, type, timing, message,
+ * Developer Handoff v4.4 (page 6): date, name, email, type, phone (replaced timing in
+ * review #1), message,
  * consent time, source (UTM), status, owner. Status and owner are set by the back end.
  */
 
@@ -21,7 +22,9 @@ export interface InquiryInput {
   name: string;
   email: string;
   type: InquirerType;
-  timing: string;
+  /** Picked country (ISO region, or "OTHER") and the number as typed. */
+  phoneRegion: string;
+  phoneNumber: string;
   message: string;
   consent: boolean;
   /** Honeypot. Real visitors never see or fill this field. */
@@ -43,7 +46,8 @@ export interface InquiryPayload {
   name: string;
   email: string;
   type: InquirerType;
-  timing: string;
+  /** International format, e.g. "+971 501234567"; empty when not given. */
+  phone: string;
   message: string;
   locale: string;
   /** ISO 8601 time the visitor ticked the consent box (UAE PDPL / GDPR record). */
@@ -55,7 +59,7 @@ export interface InquiryPayload {
   turnstileToken?: string;
 }
 
-export type InquiryField = "name" | "email" | "consent";
+export type InquiryField = "name" | "email" | "phone" | "consent";
 export type InquiryFieldErrors = Partial<Record<InquiryField, true>>;
 
 export type InquiryResult =

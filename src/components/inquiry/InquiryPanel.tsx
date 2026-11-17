@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 
+import type { DialingOption } from "@/content/dialing-codes";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { ChatSlot } from "./ChatSlot";
@@ -13,15 +14,17 @@ type Tab = "form" | "chat";
 interface InquiryPanelProps {
   locale: Locale;
   copy: Dictionary["inquiry"];
+  dialingOptions: DialingOption[];
   chatEnabled: boolean;
 }
 
 /** Inquiry form, with an optional "Chat with us" tab (features.chat). */
-export function InquiryPanel({ locale, copy, chatEnabled }: InquiryPanelProps) {
+export function InquiryPanel({ locale, copy, dialingOptions, chatEnabled }: InquiryPanelProps) {
   const [tab, setTab] = useState<Tab>("form");
   const baseId = useId();
 
-  if (!chatEnabled) return <InquiryForm locale={locale} copy={copy} />;
+  const form = <InquiryForm locale={locale} copy={copy} dialingOptions={dialingOptions} />;
+  if (!chatEnabled) return form;
 
   const tabs: Tab[] = ["form", "chat"];
   return (
@@ -48,7 +51,7 @@ export function InquiryPanel({ locale, copy, chatEnabled }: InquiryPanelProps) {
         aria-labelledby={`${baseId}-tab-form`}
         hidden={tab !== "form"}
       >
-        <InquiryForm locale={locale} copy={copy} />
+        {form}
       </div>
       <div
         role="tabpanel"

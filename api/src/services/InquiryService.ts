@@ -82,7 +82,7 @@ export class InquiryService {
       name: submission.name,
       email: submission.email,
       type: submission.type,
-      timing: submission.timing,
+      phone: submission.phone,
       message: submission.message,
       locale: normalizeLocale(submission.locale),
       consentAt: submission.consentAt,

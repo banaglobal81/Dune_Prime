@@ -11,7 +11,6 @@ interface SplitFeatureProps {
   imageRight?: boolean;
   /** "portrait" = 4:5 image (default); "wide" = 3:2 image with a 7:3 split. */
   shape?: "portrait" | "wide";
-  illustrativeLabel?: string;
   /** Small caption under the image. */
   caption?: string;
   children: ReactNode;
@@ -23,7 +22,6 @@ export function SplitFeature({
   alt,
   imageRight,
   shape = "portrait",
-  illustrativeLabel,
   caption,
   children,
 }: SplitFeatureProps) {
@@ -38,7 +36,6 @@ export function SplitFeature({
             photo={photo}
             alt={alt}
             sizes="(max-width: 860px) 100vw, 60vw"
-            illustrativeLabel={illustrativeLabel}
             className={styles.image}
           />
         </div>

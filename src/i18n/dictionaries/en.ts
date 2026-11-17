@@ -45,9 +45,7 @@ export const en = {
     link: "Learn more →",
   },
 
-  common: {
-    illustrative: "Illustrative image · photos coming",
-  },
+  common: {},
 
   home: {
     hero: {
@@ -233,8 +231,11 @@ export const en = {
       name: "Name",
       email: "Email",
       type: "I am",
-      timing: "Timing",
-      timingPlaceholder: "e.g. first quarter of 2027",
+      phone: "Phone number",
+      phoneCode: "Country code",
+      phoneOther: "Other",
+      phonePlaceholder: "e.g. 50 123 4567",
+      phoneOtherPlaceholder: "+ country code and number",
       message: "Message",
       messagePlaceholder: "A few lines are enough.",
       consent: "I agree that Dune Prime may contact me about this inquiry.",
@@ -250,6 +251,7 @@ export const en = {
       errors: {
         name: "Please enter your name.",
         email: "Please enter a valid email address.",
+        phone: "Please enter a valid phone number.",
         consent: "Please confirm we may contact you.",
         failed: "Your message could not be sent. Please try again, or write to us directly.",
       },
@@ -271,7 +273,6 @@ export const en = {
         "The same people who inspect a home before we take it on run it once it opens. Guests and partners deal with one team, from first visit to monthly statement.",
       ],
       imageAlt: "The Dune Prime team",
-      note: "Illustrative AI portraits for layout. Photos of our team will replace them.",
     },
     scenes: {
       evenings: { title: "Evenings that glow.", imageAlt: "Dubai Marina towers at dusk" },
@@ -351,7 +352,7 @@ export const en = {
     location: "Dubai, United Arab Emirates",
     licence: "DET Licence No. 1657365",
     disclaimer:
-      "Dune Prime is a short-stay operator. Nothing on this site is an offer of investments or securities or a promise of returns. 2027 figures are projections. Availability, prices and permit status are confirmed on inquiry.",
+      "Dune Prime is a licensed short-stay operator in Dubai. We welcome conversations with investors and partners. Any participation is discussed privately, offered only under applicable licences and after legal review, and is not a promise of returns. 2027 figures are projections. Availability, prices and permit status are confirmed on inquiry.",
     credits:
       "Photos: Norlando Pobre (CC BY 2.0), Phil6007 (CC BY-SA 4.0), Francisco Anzola (CC BY 2.0), giggel (CC BY 3.0), Iwona Rege (CC BY-SA 4.0), via Wikimedia Commons.",
     licensedBy: "Licensed by the Dubai Department of Economy and Tourism, Vacation Homes Rental",

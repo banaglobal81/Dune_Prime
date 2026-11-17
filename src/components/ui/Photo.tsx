@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { photos, type PhotoKey } from "@/content/photos";
-import styles from "./Photo.module.css";
 
 interface PhotoProps {
   photo: PhotoKey;
@@ -12,31 +11,16 @@ interface PhotoProps {
   fill?: boolean;
   /** Load immediately with high priority. Use only for the above-the-fold hero (LCP). */
   eager?: boolean;
-  /** Label shown on illustrative images. Omit to hide the label. */
-  illustrativeLabel?: string;
   className?: string;
   objectPosition?: string;
 }
 
-/**
- * next/image wrapper bound to the photo registry. Adds the "illustrative" label
- * automatically for AI or placeholder images.
- */
-export function Photo({
-  photo,
-  alt,
-  sizes,
-  fill,
-  eager,
-  illustrativeLabel,
-  className,
-  objectPosition,
-}: PhotoProps) {
+/** next/image wrapper bound to the photo registry (source size gives the aspect ratio). */
+export function Photo({ photo, alt, sizes, fill, eager, className, objectPosition }: PhotoProps) {
   const asset = photos[photo];
-  const showLabel = Boolean(illustrativeLabel && "illustrative" in asset && asset.illustrative);
   const style = objectPosition ? { objectPosition } : undefined;
 
-  const image = fill ? (
+  return fill ? (
     <Image
       src={asset.src}
       alt={alt}
@@ -59,13 +43,5 @@ export function Photo({
       loading={eager ? "eager" : "lazy"}
       fetchPriority={eager ? "high" : undefined}
     />
-  );
-
-  if (!showLabel) return image;
-  return (
-    <>
-      {image}
-      <span className={styles.tag}>{illustrativeLabel}</span>
-    </>
   );
 }

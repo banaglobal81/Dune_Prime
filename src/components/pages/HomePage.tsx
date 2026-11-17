@@ -36,11 +36,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       </ImageHero>
 
       <Section id="about" aria-labelledby="about-title">
-        <SplitFeature
-          photo="about"
-          alt={home.about.imageAlt}
-          illustrativeLabel={dict.common.illustrative}
-        >
+        <SplitFeature photo="about" alt={home.about.imageAlt}>
           <h2 id="about-title">{home.about.title}</h2>
           {home.about.paragraphs.map((text) => (
             <p key={text} className="lead">

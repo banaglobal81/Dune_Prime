@@ -10,8 +10,8 @@ export type HomeEntry =
   | { id: string; kind: "invite"; photo: PhotoKey; copyKey: "nextHome" };
 
 export const HOMES: ReadonlyArray<HomeEntry> = [
-  { id: "capital-bay-603", kind: "listing", photo: "unit", copyKey: "unit" },
   { id: "first-villa", kind: "listing", photo: "villa2", copyKey: "villa" },
+  { id: "capital-bay-603", kind: "listing", photo: "unit", copyKey: "unit" },
   { id: "next-home", kind: "invite", photo: "next", copyKey: "nextHome" },
 ];
 

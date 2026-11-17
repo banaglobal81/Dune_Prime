@@ -47,9 +47,7 @@ export const ko: Dictionary = {
     link: "자세히 보기 →",
   },
 
-  common: {
-    illustrative: "예시 이미지 · 실제 사진 준비 중",
-  },
+  common: {},
 
   home: {
     hero: {
@@ -218,8 +216,11 @@ export const ko: Dictionary = {
       name: "이름",
       email: "이메일",
       type: "문의 유형",
-      timing: "희망 시기",
-      timingPlaceholder: "예: 2027년 1분기",
+      phone: "전화번호",
+      phoneCode: "국가 번호",
+      phoneOther: "기타",
+      phonePlaceholder: "예: 10 1234 5678",
+      phoneOtherPlaceholder: "+국가 번호와 전화번호",
       message: "내용",
       messagePlaceholder: "간단히 적어주셔도 됩니다.",
       consent: "Dune Prime이 이 문의와 관련해 연락하는 것에 동의합니다.",
@@ -235,6 +236,7 @@ export const ko: Dictionary = {
       errors: {
         name: "이름을 입력해 주세요.",
         email: "올바른 이메일 주소를 입력해 주세요.",
+        phone: "올바른 전화번호를 입력해 주세요.",
         consent: "연락 동의에 체크해 주세요.",
         failed: "문의를 보내지 못했습니다. 다시 시도하시거나 직접 연락해 주세요.",
       },
@@ -256,7 +258,6 @@ export const ko: Dictionary = {
         "숙소를 실사한 사람들이 문을 연 뒤에도 그대로 운영합니다. 손님도 파트너도 처음 방문부터 월간 명세서까지 한 팀과 이야기합니다.",
       ],
       imageAlt: "Dune Prime 팀",
-      note: "레이아웃용 AI 예시 인물입니다. 실제 팀 사진으로 교체됩니다.",
     },
     scenes: {
       evenings: { title: "황금빛으로 물드는 저녁", imageAlt: "해 질 녘의 두바이 마리나 고층 빌딩" },
@@ -333,7 +334,7 @@ export const ko: Dictionary = {
     location: "두바이, 아랍에미리트",
     licence: "DET 상업 라이선스 1657365",
     disclaimer:
-      "Dune Prime은 단기 숙박 운영사입니다. 이 사이트의 내용은 투자 상품이나 증권의 판매 제안이 아니며, 수익을 약속하지 않습니다. 2027년 수치는 예상치입니다. 예약 가능 여부, 요금, 허가 상태는 문의 시 확정됩니다.",
+      "Dune Prime은 두바이의 인가받은 단기 숙박 운영사입니다. 투자자 및 파트너와의 대화를 환영합니다. 모든 참여는 개별적으로 논의되며, 관련 인허가 범위 안에서 법률 검토를 거친 후에만 제안되고, 수익을 약속하지 않습니다. 2027년 수치는 예상치입니다. 예약 가능 여부, 요금, 허가 상태는 문의 시 확정됩니다.",
     credits:
       "사진: Norlando Pobre (CC BY 2.0), Phil6007 (CC BY-SA 4.0), Francisco Anzola (CC BY 2.0), giggel (CC BY 3.0), Iwona Rege (CC BY-SA 4.0), Wikimedia Commons.",
     licensedBy: "두바이 경제관광청(DET) 발급 · 업종 홀리데이 홈 임대업",

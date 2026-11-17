@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { collectAttribution } from "./attribution";
 import { InquiryValidator } from "./InquiryValidator";
+import { formatPhone } from "./phone";
 import { DemoInquiryTransport, HttpInquiryTransport, type InquiryTransport } from "./transports";
 import type { InquiryInput, InquiryPayload, InquiryResult } from "./types";
 
@@ -43,7 +44,7 @@ export class InquiryService {
       name: input.name.trim(),
       email: input.email.trim(),
       type: input.type,
-      timing: input.timing.trim(),
+      phone: formatPhone(input.phoneRegion, input.phoneNumber),
       message: input.message.trim(),
       locale: context.locale,
       consentAt: context.consentAt,
