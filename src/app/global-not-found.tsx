@@ -6,13 +6,14 @@ import type { Metadata } from "next";
 import { localizedPath } from "@/i18n/config";
 import { en } from "@/i18n/dictionaries/en";
 import { ko } from "@/i18n/dictionaries/ko";
+import { th } from "@/i18n/dictionaries/th";
 import styles from "./global-not-found.module.css";
 
 export const metadata: Metadata = {
   title: `${en.meta.notFound.title} · ${en.meta.siteName}`,
 };
 
-/** Shared 404 for both locales (the site has two root layouts). Bilingual on purpose. */
+/** Shared 404 for every locale (each locale has its own root layout). Multilingual on purpose. */
 export default function GlobalNotFound() {
   return (
     <html lang="en">
@@ -26,10 +27,16 @@ export default function GlobalNotFound() {
           <p className={styles.body} lang="ko">
             {ko.meta.notFound.body}
           </p>
+          <p className={styles.body} lang="th">
+            {th.meta.notFound.body}
+          </p>
           <p className={styles.links}>
             <a href={localizedPath("en", "home")}>{en.meta.notFound.back}</a>
             <a href={localizedPath("ko", "home")} lang="ko">
               {ko.meta.notFound.back}
+            </a>
+            <a href={localizedPath("th", "home")} lang="th">
+              {th.meta.notFound.back}
             </a>
           </p>
         </main>

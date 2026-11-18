@@ -74,3 +74,13 @@
   color: var(--on-dark);
   border-bottom-color: var(--on-dark);
 }
+
+/* Long labels wrap instead of pushing the page wider than a small phone. */
+@media (max-width: 480px) {
+  .button {
+    max-width: 100%;
+    line-height: 1.4;
+    text-align: center;
+    white-space: normal;
+  }
+}

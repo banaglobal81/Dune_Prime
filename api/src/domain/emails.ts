@@ -44,6 +44,22 @@ const AUTO_REPLY: Record<SupportedLocale, { subject: string; body: (name: string
         "https://dunepr.com/ko/",
       ].join("\n"),
   },
+  th: {
+    subject: "เราได้รับข้อความของคุณแล้ว · Dune Prime",
+    body: (name) =>
+      [
+        `เรียน คุณ${name}`,
+        "",
+        "ขอบคุณที่ติดต่อ Dune Prime Holiday Homes เราได้รับข้อความของคุณแล้ว และเจ้าหน้าที่จะตอบกลับด้วยตนเอง โดยปกติภายในวันเดียวกัน (เวลา 9:00 ถึง 21:00 น. ตามเวลาดูไบ)",
+        "",
+        "หากต้องการแจ้งข้อมูลเพิ่มเติม สามารถตอบกลับอีเมลฉบับนี้ได้เลย",
+        "",
+        "ขอแสดงความนับถือ",
+        "Dune Prime Holiday Homes L.L.C.",
+        "ใบอนุญาต DET เลขที่ 1657365 · ดูไบ สหรัฐอาหรับเอมิเรตส์",
+        "https://dunepr.com/th/",
+      ].join("\n"),
+  },
 };
 
 export function autoReplyEmail(record: InquiryRecord, replyTo?: string): EmailMessage {

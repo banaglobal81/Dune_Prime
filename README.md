@@ -3,7 +3,7 @@
 Static Next.js site, deployed on Railway, rebuilt from the v4.4 design reference
 (`20261116_Dune Prime 웹사이트_v4.4`) following the Developer Handoff v4.4.
 
-- English at `/`, Korean at `/ko/` (linked with hreflang)
+- English at `/`, Korean at `/ko/`, Thai at `/th/` (linked with hreflang)
 - Pages: Home, Story, Portfolio (switched off)
 - Every page is pre-rendered to HTML at build time, so all copy is readable by search engines
 
@@ -55,17 +55,17 @@ The site is plain static files, so it can also be hosted on Cloudflare Pages or 
 
 ## Where things live
 
-| What                                                         | Where                                                                |
-| ------------------------------------------------------------ | -------------------------------------------------------------------- |
-| Launch settings: contact details, section switches, endpoint | `src/config/site.ts`                                                 |
-| All copy, per language                                       | `src/i18n/dictionaries/en.ts`, `ko.ts`                               |
-| Languages and URLs                                           | `src/i18n/config.ts`                                                 |
-| Photos (source files)                                        | `assets/photos/` + registry in `src/content/photos.ts`               |
-| Homes in the carousel                                        | `src/content/homes.ts`                                               |
-| Inquiry pipeline (back-end boundary)                         | `src/services/inquiry/`                                              |
-| SEO: metadata, hreflang, JSON-LD                             | `src/lib/seo.ts`, `src/app/sitemap.ts`, `src/app/robots.ts`          |
-| Colours, spacing, type                                       | `src/styles/globals.css` (`:root` tokens)                            |
-| Pages                                                        | `src/components/pages/`; routes in `src/app/(en)/` and `src/app/ko/` |
+| What                                                         | Where                                                                            |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| Launch settings: contact details, section switches, endpoint | `src/config/site.ts`                                                             |
+| All copy, per language                                       | `src/i18n/dictionaries/en.ts`, `ko.ts`, `th.ts`                                  |
+| Languages and URLs                                           | `src/i18n/config.ts`                                                             |
+| Photos (source files)                                        | `assets/photos/` + registry in `src/content/photos.ts`                           |
+| Homes in the carousel                                        | `src/content/homes.ts`                                                           |
+| Inquiry pipeline (back-end boundary)                         | `src/services/inquiry/`                                                          |
+| SEO: metadata, hreflang, JSON-LD                             | `src/lib/seo.ts`, `src/app/sitemap.ts`, `src/app/robots.ts`                      |
+| Colours, spacing, type                                       | `src/styles/globals.css` (`:root` tokens)                                        |
+| Pages                                                        | `src/components/pages/`; routes in `src/app/(en)/`, `src/app/ko/`, `src/app/th/` |
 
 ## Back end: inquiry API (`api/`)
 
@@ -122,7 +122,8 @@ Before launch:
 
 ## Adding a language
 
-1. Add the code to `LOCALES` and `LOCALE_META` in `src/i18n/config.ts`.
+1. Add the code to `LOCALES` and `LOCALE_META` in `src/i18n/config.ts`, with a square flag SVG in
+   `public/flags/`.
 2. Add `src/i18n/dictionaries/<code>.ts` typed as `Dictionary` (TypeScript flags any missing text).
 3. Copy `src/app/ko/` to `src/app/<code>/` and change `LOCALE`.
 

@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 import { ButtonLink } from "@/components/ui/Button";
-import { LOCALE_META, LOCALES, localizedPath, type Locale, type RouteKey } from "@/i18n/config";
+import { localizedPath, type Locale, type RouteKey } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./SiteHeader.module.css";
 
 interface SiteHeaderProps {
@@ -40,20 +41,7 @@ export function SiteHeader({ locale, route, dict }: SiteHeaderProps) {
           {navTarget === "story" ? dict.nav.story : dict.nav.home}
         </Link>
 
-        <nav className={styles.lang} aria-label={dict.nav.language}>
-          {LOCALES.map((l) => (
-            <a
-              key={l}
-              href={localizedPath(l, route)}
-              hrefLang={LOCALE_META[l].hreflang}
-              lang={LOCALE_META[l].hreflang}
-              aria-current={l === locale ? "true" : undefined}
-              className={styles.langLink}
-            >
-              {LOCALE_META[l].shortLabel}
-            </a>
-          ))}
-        </nav>
+        <LanguageSwitcher locale={locale} route={route} label={dict.nav.language} />
 
         <ButtonLink href={localizedPath(locale, "home", "contact")} className={styles.cta}>
           {dict.nav.inquiry}

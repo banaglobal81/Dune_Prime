@@ -49,7 +49,11 @@ export type DialingRegion = keyof typeof DIALING_CODES;
 export const OTHER_REGION = "OTHER";
 
 /** Pre-selected code per site language. */
-export const DEFAULT_DIALING_REGION: Record<Locale, DialingRegion> = { en: "AE", ko: "KR" };
+export const DEFAULT_DIALING_REGION: Record<Locale, DialingRegion> = {
+  en: "AE",
+  ko: "KR",
+  th: "TH",
+};
 
 export interface DialingOption {
   region: DialingRegion;

@@ -96,6 +96,15 @@ describe("InquiryService", () => {
     ]);
   });
 
+  it("replies in Thai to inquiries from the Thai site", async () => {
+    const { service, mailer } = setup();
+    await service.submit(parse({ locale: "th" }));
+
+    const autoReply = mailer.sent.find((m) => m.to[0] === "sara@example.com");
+    expect(autoReply?.subject).toContain("เราได้รับข้อความของคุณแล้ว");
+    expect(autoReply?.text).toContain("https://dunepr.com/th/");
+  });
+
   it("falls back to the default owner", async () => {
     const { service, repository } = setup();
     await service.submit(parse({ type: "owner" }));

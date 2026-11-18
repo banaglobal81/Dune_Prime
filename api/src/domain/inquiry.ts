@@ -15,7 +15,7 @@ export const INQUIRER_TYPES = [
 ] as const;
 export type InquirerType = (typeof INQUIRER_TYPES)[number];
 
-export const SUPPORTED_LOCALES = ["en", "ko"] as const;
+export const SUPPORTED_LOCALES = ["en", "ko", "th"] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
 const text = (max: number) => z.string().trim().max(max);
