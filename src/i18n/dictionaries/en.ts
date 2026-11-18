@@ -109,7 +109,7 @@ export const en = {
     },
     gallery: {
       palmAlt: "Palm Jumeirah from above",
-      locAlt: "Burj Al Arab at sunset",
+      locAlt: "Downtown Dubai skyline at sunset",
     },
     homes: {
       title: "Homes under contract.",
@@ -278,7 +278,7 @@ export const en = {
       evenings: { title: "Evenings that glow.", imageAlt: "Dubai Marina towers at dusk" },
       sunsets: {
         title: "Sunsets worth planning a trip around.",
-        imageAlt: "Burj Al Arab at sunset",
+        imageAlt: "Downtown Dubai skyline at sunset",
       },
       coastline: { title: "A coastline shaped by ambition.", imageAlt: "Palm Jumeirah from above" },
       water: { title: "Water in every direction.", imageAlt: "Dubai Marina" },

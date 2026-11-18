@@ -102,7 +102,7 @@ export const ko: Dictionary = {
     },
     gallery: {
       palmAlt: "하늘에서 본 팜 주메이라",
-      locAlt: "노을 속의 부르즈 알 아랍",
+      locAlt: "노을 속의 두바이 다운타운 스카이라인",
     },
     homes: {
       title: "계약된 숙소",
@@ -261,7 +261,7 @@ export const ko: Dictionary = {
     },
     scenes: {
       evenings: { title: "황금빛으로 물드는 저녁", imageAlt: "해 질 녘의 두바이 마리나 고층 빌딩" },
-      sunsets: { title: "이 노을을 보러 떠나는 여행", imageAlt: "노을 속의 부르즈 알 아랍" },
+      sunsets: { title: "이 노을을 보러 떠나는 여행", imageAlt: "노을 속의 두바이 다운타운 스카이라인" },
       coastline: { title: "바다 위에 그린 해안선", imageAlt: "하늘에서 본 팜 주메이라" },
       water: { title: "어디를 봐도 바다", imageAlt: "두바이 마리나" },
     },

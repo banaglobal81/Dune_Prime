@@ -23,7 +23,7 @@ export function GallerySection({ dict }: { dict: Dictionary }) {
             alt={gallery.locAlt}
             sizes="(max-width: 760px) 100vw, 40vw"
             className={styles.image}
-            objectPosition="22% 50%"
+            objectPosition="35% 50%"
           />
         </figure>
       </div>

@@ -2,6 +2,8 @@
  * Photo registry. Source files live in `assets/photos/`; responsive WebP versions are
  * generated into `public/images/` at build time. Width and height are the source
  * dimensions and give next/image the aspect ratio (no layout shift).
+ *
+ * Replacing a photo? Use a new file name: the CDN caches images by URL for 30 days.
  */
 
 export interface PhotoAsset {
@@ -14,7 +16,7 @@ export const photos = {
   hero: { src: "/images/hero.jpg", width: 2200, height: 1100 },
   about: { src: "/images/about.jpg", width: 1800, height: 1028 },
   palm: { src: "/images/palm.jpg", width: 2600, height: 1407 },
-  loc: { src: "/images/loc.jpg", width: 2400, height: 1600 },
+  loc: { src: "/images/dubai-skyline.jpg", width: 2400, height: 1600 },
   unit: { src: "/images/unit.jpg", width: 1800, height: 1028 },
   villa2: { src: "/images/villa2.jpg", width: 1800, height: 1215 },
   next: { src: "/images/next.jpg", width: 1800, height: 1350 },
