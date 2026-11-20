@@ -12,7 +12,7 @@ interface SectionHeadProps {
 /** Section title row: large heading left, optional lead right (v4.4 ".head"). */
 export function SectionHead({ title, titleId, aside }: SectionHeadProps) {
   return (
-    <div className={styles.head}>
+    <div className={styles.head} data-reveal>
       <h2 id={titleId}>{title}</h2>
       {aside ? <div className={styles.aside}>{aside}</div> : null}
     </div>

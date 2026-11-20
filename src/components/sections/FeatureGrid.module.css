@@ -10,6 +10,10 @@
   min-width: 0;
 }
 
+.cols2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .cols3 {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -126,6 +130,7 @@
 }
 
 @media (max-width: 520px) {
+  .cols2,
   .cols4 {
     grid-template-columns: 1fr;
   }

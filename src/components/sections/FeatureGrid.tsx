@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import styles from "./FeatureGrid.module.css";
 
 interface FeatureItem {
@@ -13,7 +15,7 @@ interface FeatureGridProps {
    * "boxed": bordered cells for dark sections (operating model).
    */
   variant: "headed" | "labelled" | "boxed";
-  columns: 3 | 4;
+  columns: 2 | 3 | 4;
   /** Render as an ordered list when the order matters (steps). */
   ordered?: boolean;
   /** Draw the top rule. Off for the facts row under the hero. */
@@ -29,8 +31,13 @@ export function FeatureGrid({ items, variant, columns, ordered, rule = true }: F
 
   return (
     <List className={classes}>
-      {items.map((item) => (
-        <li key={item.title} className={styles.item}>
+      {items.map((item, index) => (
+        <li
+          key={item.title}
+          className={styles.item}
+          data-reveal
+          style={{ "--reveal-i": index } as CSSProperties}
+        >
           {variant === "headed" ? (
             <>
               <h3 className={styles.heading}>{item.title}</h3>

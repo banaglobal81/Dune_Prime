@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { Photo } from "@/components/ui/Photo";
 import type { PhotoKey } from "@/content/photos";
@@ -30,7 +30,7 @@ export function SplitFeature({
     .join(" ");
   return (
     <div className={classes}>
-      <figure className={styles.figure}>
+      <figure className={styles.figure} data-reveal>
         <div className={styles.frame}>
           <Photo
             photo={photo}
@@ -41,7 +41,13 @@ export function SplitFeature({
         </div>
         {caption ? <figcaption className={styles.caption}>{caption}</figcaption> : null}
       </figure>
-      <div className={`stack ${styles.body}`}>{children}</div>
+      <div
+        className={`stack ${styles.body}`}
+        data-reveal
+        style={{ "--reveal-i": 1 } as CSSProperties}
+      >
+        {children}
+      </div>
     </div>
   );
 }

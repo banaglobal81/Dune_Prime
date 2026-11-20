@@ -188,6 +188,23 @@ html[lang="th"] body :is(h1, h2, h3) {
   line-height: 1.35;
 }
 
+/*
+ * Scroll reveal (see components/motion/ScrollReveal). Elements are only hidden once the
+ * script has added .reveal-ready, so the page is complete without JavaScript.
+ * --reveal-i staggers items in a row.
+ */
+[data-reveal] {
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--reveal-i, 0) * 90ms);
+}
+
+.reveal-ready [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

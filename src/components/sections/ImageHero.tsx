@@ -11,12 +11,14 @@ interface ImageHeroProps {
   /** "page" renders the page <h1> and loads the image eagerly; "scene" is a large photo interlude with an <h2>. */
   variant: "page" | "scene";
   lead?: string;
+  /** Buttons under the title (page hero only). */
+  actions?: ReactNode;
   /** Content under the image, e.g. the facts row on the home page. */
   children?: ReactNode;
 }
 
 /** Full-width photo with a caption overlaid at the bottom (v4.4 "hero" and "scene"). */
-export function ImageHero({ photo, alt, title, variant, lead, children }: ImageHeroProps) {
+export function ImageHero({ photo, alt, title, variant, lead, actions, children }: ImageHeroProps) {
   const Heading = variant === "page" ? "h1" : "h2";
   return (
     <section className={`${styles.hero} ${styles[variant]}`}>
@@ -30,7 +32,10 @@ export function ImageHero({ photo, alt, title, variant, lead, children }: ImageH
           className={styles.image}
         />
         <div className={styles.caption}>
-          <Heading className={styles.title}>{title}</Heading>
+          <div className={styles.main}>
+            <Heading className={styles.title}>{title}</Heading>
+            {actions ? <div className={styles.actions}>{actions}</div> : null}
+          </div>
           {lead ? <p className={styles.lead}>{lead}</p> : null}
         </div>
       </div>

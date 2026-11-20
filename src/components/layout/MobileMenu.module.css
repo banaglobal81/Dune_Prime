@@ -1,0 +1,122 @@
+.root {
+  display: none;
+}
+
+.trigger {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.trigger:hover {
+  border-color: var(--line);
+}
+
+/* Two bars that turn into a cross while open. */
+.icon {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 10px;
+}
+
+.icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transition:
+    transform 0.25s,
+    top 0.25s;
+}
+
+.icon span:first-child {
+  top: 0;
+}
+
+.icon span:last-child {
+  top: calc(100% - 1.5px);
+}
+
+.trigger[aria-expanded="true"] .icon span:first-child {
+  top: calc(50% - 0.75px);
+  transform: rotate(45deg);
+}
+
+.trigger[aria-expanded="true"] .icon span:last-child {
+  top: calc(50% - 0.75px);
+  transform: rotate(-45deg);
+}
+
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: calc(100svh - var(--header-h));
+  overflow-y: auto;
+  padding: 8px var(--gutter-right) 28px var(--gutter-left);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 24px 40px rgba(16, 16, 18, 0.1);
+  animation: drop 0.22s ease-out;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: block;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.link[aria-current="page"] {
+  color: var(--mute);
+}
+
+.cta {
+  display: block;
+  margin-top: 22px;
+  padding: 16px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+:global(html:is([lang="ko"], [lang="th"])) .cta {
+  letter-spacing: 0;
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 1079px) {
+  .root {
+    display: block;
+  }
+}

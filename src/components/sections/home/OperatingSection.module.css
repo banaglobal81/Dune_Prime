@@ -1,0 +1,30 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 520px);
+  gap: clamp(36px, 6vw, 96px);
+  align-items: start;
+}
+
+.layout > * {
+  min-width: 0;
+}
+
+/* The short text column stays in view beside the taller statement card. */
+.layout > :first-child {
+  position: sticky;
+  top: 104px;
+}
+
+.cta {
+  margin-top: 32px;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .layout > :first-child {
+    position: static;
+  }
+}

@@ -29,17 +29,19 @@ export function HomesSection({ locale, dict }: Props) {
         titleId="units-title"
         aside={<p className="lead">{copy.lead}</p>}
       />
-      <HomesCarousel
-        label={copy.carouselLabel}
-        previousLabel={copy.previous}
-        nextLabel={copy.next}
-        slideLabel={copy.slideLabel}
-        trailing={viewAll}
-      >
-        {HOMES.map((home) => (
-          <HomeSlide key={home.id} home={home} locale={locale} dict={dict} />
-        ))}
-      </HomesCarousel>
+      <div data-reveal>
+        <HomesCarousel
+          label={copy.carouselLabel}
+          previousLabel={copy.previous}
+          nextLabel={copy.next}
+          slideLabel={copy.slideLabel}
+          trailing={viewAll}
+        >
+          {HOMES.map((home) => (
+            <HomeSlide key={home.id} home={home} locale={locale} dict={dict} />
+          ))}
+        </HomesCarousel>
+      </div>
     </Section>
   );
 }

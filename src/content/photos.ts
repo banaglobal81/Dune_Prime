@@ -15,7 +15,7 @@ export interface PhotoAsset {
 export const photos = {
   hero: { src: "/images/hero.jpg", width: 2200, height: 1100 },
   about: { src: "/images/about.jpg", width: 1800, height: 1028 },
-  palm: { src: "/images/palm.jpg", width: 2600, height: 1407 },
+  palm: { src: "/images/palm-jumeirah.jpg", width: 2600, height: 1197 },
   loc: { src: "/images/downtown-skyline.jpg", width: 2400, height: 1600 },
   unit: { src: "/images/unit.jpg", width: 1800, height: 1028 },
   villa2: { src: "/images/villa2.jpg", width: 1800, height: 1215 },

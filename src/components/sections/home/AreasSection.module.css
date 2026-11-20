@@ -23,9 +23,28 @@
   aspect-ratio: 4 / 5;
 }
 
+.caption {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink);
+}
+
+.name {
+  font-size: 21px;
+}
+
+.body {
+  margin-top: 6px;
+  max-width: 44ch;
+  color: var(--mute);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 @media (max-width: 760px) {
   .gallery {
     grid-template-columns: 1fr;
+    gap: 44px;
   }
 
   .tall .image {

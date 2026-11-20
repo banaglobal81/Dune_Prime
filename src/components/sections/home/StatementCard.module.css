@@ -1,0 +1,178 @@
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 60px rgba(16, 16, 18, 0.08);
+  padding: clamp(24px, 3vw, 40px);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid var(--ink);
+  line-height: 1.2;
+}
+
+.title {
+  margin-top: 14px;
+  font-size: 24px;
+}
+
+.home {
+  margin-top: 2px;
+  color: var(--mute);
+}
+
+.period {
+  flex-shrink: 0;
+  color: var(--mute);
+  font-size: 13.5px;
+}
+
+.block {
+  padding-block: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.blockTitle {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--mute);
+  font-size: 12px;
+}
+
+.rows {
+  margin: 0;
+}
+
+.rows > div,
+.records > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 5px;
+}
+
+.rows dd,
+.records dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.rows dt {
+  color: var(--mute);
+}
+
+.total {
+  margin-top: 6px;
+  border-top: 1px dashed var(--line);
+  padding-top: 10px !important;
+  font-weight: 600;
+}
+
+.rows .total dt {
+  color: var(--ink);
+}
+
+.channelsTitle {
+  margin-top: 18px;
+}
+
+.bar {
+  display: flex;
+  height: 10px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.bar > span {
+  display: block;
+  height: 100%;
+}
+
+.airbnb {
+  background: var(--ink);
+}
+
+.booking {
+  background: #8a8a93;
+}
+
+.direct {
+  background: var(--line);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--mute);
+  font-size: 13.5px;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.net {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-block: 22px 18px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.netValue {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.records {
+  margin: 14px 0 0;
+}
+
+.records dt {
+  color: var(--mute);
+}
+
+.note {
+  margin-top: 18px;
+  color: var(--mute);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 420px) {
+  .header {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

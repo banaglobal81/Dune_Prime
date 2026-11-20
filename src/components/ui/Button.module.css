@@ -44,6 +44,18 @@
   color: var(--ink);
 }
 
+/* Filled white: the main action on a photo or dark band. */
+.solidOnDark {
+  color: var(--ink);
+  background: var(--on-dark);
+  border-color: var(--on-dark);
+}
+
+.solidOnDark:hover {
+  background: transparent;
+  color: var(--on-dark);
+}
+
 .textLink {
   text-decoration: none;
   padding-bottom: 3px;

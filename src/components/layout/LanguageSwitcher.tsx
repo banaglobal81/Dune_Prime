@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type FocusEvent } from "react";
+import { useCallback, useId, useRef, useState, type FocusEvent } from "react";
 
+import { useDismiss } from "@/hooks/useDismiss";
 import { LOCALE_META, LOCALES, localizedPath, type Locale, type RouteKey } from "@/i18n/config";
 import styles from "./LanguageSwitcher.module.css";
 
@@ -32,23 +33,8 @@ export function LanguageSwitcher({ locale, route, label }: LanguageSwitcherProps
   const triggerRef = useRef<HTMLButtonElement>(null);
   const listId = useId();
 
-  useEffect(() => {
-    if (!open) return;
-    const onPointerDown = (event: PointerEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      setOpen(false);
-      triggerRef.current?.focus();
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
+  const close = useCallback(() => setOpen(false), []);
+  useDismiss(open, close, rootRef, triggerRef);
 
   // Keyboard users tabbing past the last language close the list.
   const onBlur = (event: FocusEvent<HTMLElement>) => {

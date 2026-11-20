@@ -4,6 +4,8 @@
   padding: clamp(64px, 8vw, 112px) var(--gutter-right) calc(36px + env(safe-area-inset-bottom, 0px))
     var(--gutter-left);
   font-size: 15px;
+  /* Hairline so the footer stays distinct from a dark section above it. */
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .grid {

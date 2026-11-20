@@ -3,7 +3,7 @@ import type { ComponentProps, ReactNode } from "react";
 
 import styles from "./Button.module.css";
 
-type Variant = "outline" | "outlineOnDark";
+type Variant = "outline" | "outlineOnDark" | "solidOnDark";
 
 interface ButtonLinkProps extends Omit<ComponentProps<typeof Link>, "className"> {
   variant?: Variant;

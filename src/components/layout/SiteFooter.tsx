@@ -40,7 +40,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
           <h2 className={styles.heading}>{dict.footer.company}</h2>
           <ul className={styles.list}>
             <li>
-              <Link href={home("operating")}>{dict.nav.operating}</Link>
+              <Link href={home("how")}>{dict.nav.operating}</Link>
             </li>
             <li>
               <Link href={home("partners")}>{dict.nav.partners}</Link>

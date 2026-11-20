@@ -14,10 +14,10 @@ export function InquirySection({ locale, dict }: { locale: Locale; dict: Diction
 
   return (
     <Section id="contact" tone="dark" aria-labelledby="contact-title">
-      <h2 id="contact-title" className={styles.title}>
+      <h2 id="contact-title" className={styles.title} data-reveal>
         {copy.title}
       </h2>
-      <div className={styles.layout}>
+      <div className={styles.layout} data-reveal>
         <div>
           <p className="lead">{copy.lead}</p>
           <dl className={styles.reach}>

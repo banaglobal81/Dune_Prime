@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { siteConfig } from "@/config/site";
 import type { Locale, RouteKey } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { AnnouncementBanner } from "./AnnouncementBanner";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -27,6 +28,7 @@ export function PageShell({ locale, route, dict, children }: PageShellProps) {
         {children}
       </main>
       <SiteFooter locale={locale} dict={dict} />
+      <ScrollReveal />
     </>
   );
 }

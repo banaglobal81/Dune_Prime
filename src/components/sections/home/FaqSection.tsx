@@ -8,8 +8,10 @@ export function FaqSection({ dict }: { dict: Dictionary }) {
   return (
     <Section id="faq" aria-labelledby="faq-title">
       <div className={styles.wrap}>
-        <h2 id="faq-title">{faq.title}</h2>
-        <div className={styles.list}>
+        <h2 id="faq-title" data-reveal>
+          {faq.title}
+        </h2>
+        <div className={styles.list} data-reveal>
           {faq.items.map((item, index) => (
             <details key={item.q} className={styles.item} open={index === 0}>
               <summary className={styles.question}>{item.q}</summary>
